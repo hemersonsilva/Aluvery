@@ -36,9 +36,6 @@ fun HomeScreen(
 
         SearchTextField(searchText = text,
             onSearchChange = { text = it },
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
         )
 
         val searchedProducts = filterProducts(text)
