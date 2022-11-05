@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SearchTextField(
     searchText: String,
+    modifier: Modifier = Modifier,
     onSearchChange: (String) -> Unit
 ) {
     OutlinedTextField(
@@ -22,7 +23,7 @@ fun SearchTextField(
         onValueChange = { newValue ->
             onSearchChange(newValue)
         },
-        modifier = Modifier
+        modifier = modifier
             .padding(16.dp)
             .fillMaxWidth(),
         shape = RoundedCornerShape(100),
