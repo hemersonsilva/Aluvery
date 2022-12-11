@@ -1,4 +1,4 @@
-package com.hemerson.aluvery
+package com.hemerson.aluvery.ui.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
