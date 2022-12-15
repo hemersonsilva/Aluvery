@@ -34,18 +34,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.hemerson.aluvery.R
+import com.hemerson.aluvery.dao.ProductDao
 import com.hemerson.aluvery.model.Product
 import com.hemerson.aluvery.ui.theme.AluveryTheme
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
 class ProductFormActivity : ComponentActivity() {
+
+    private val dao = ProductDao()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Surface {
                 AluveryTheme {
-                    ProductFormScreen()
+                    ProductFormScreen(onSaveClick = {product ->
+                        dao.save(product)
+                        finish()
+                    })
                 }
             }
         }
@@ -53,7 +60,9 @@ class ProductFormActivity : ComponentActivity() {
 }
 
 @Composable
-fun ProductFormScreen() {
+fun ProductFormScreen(
+    onSaveClick: (Product) -> Unit = {}
+) {
 
     Column(
         Modifier
@@ -160,6 +169,8 @@ fun ProductFormScreen() {
                     price = convertedPrice,
                     description = description
                 )
+
+                onSaveClick(product)
             },
         ) {
             Text(text = "Salvar")
