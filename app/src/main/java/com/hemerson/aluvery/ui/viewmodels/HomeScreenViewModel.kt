@@ -7,7 +7,7 @@ import com.hemerson.aluvery.model.Product
 import com.hemerson.aluvery.sampledata.sampleCandies
 import com.hemerson.aluvery.sampledata.sampleDrinks
 import com.hemerson.aluvery.sampledata.sampleProducts
-import com.hemerson.aluvery.uistate.HomeUiState
+import com.hemerson.aluvery.ui.state.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

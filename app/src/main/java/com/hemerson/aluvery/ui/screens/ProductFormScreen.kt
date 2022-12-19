@@ -33,7 +33,7 @@ import coil.compose.AsyncImage
 import com.hemerson.aluvery.R
 import com.hemerson.aluvery.model.Product
 import com.hemerson.aluvery.ui.theme.AluveryTheme
-import com.hemerson.aluvery.uistate.ProductFormUiState
+import com.hemerson.aluvery.ui.state.ProductFormUiState
 import java.math.BigDecimal
 import java.text.DecimalFormat
 

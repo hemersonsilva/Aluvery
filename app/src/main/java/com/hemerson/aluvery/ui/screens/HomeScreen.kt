@@ -20,7 +20,7 @@ import com.hemerson.aluvery.ui.components.ProductsSection
 import com.hemerson.aluvery.ui.components.SearchTextField
 import com.hemerson.aluvery.ui.theme.AluveryTheme
 import com.hemerson.aluvery.ui.viewmodels.HomeScreenViewModel
-import com.hemerson.aluvery.uistate.HomeUiState
+import com.hemerson.aluvery.ui.state.HomeUiState
 
 
 @Composable

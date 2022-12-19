@@ -1,4 +1,4 @@
-package com.hemerson.aluvery.uistate
+package com.hemerson.aluvery.ui.state
 
 class ProductFormUiState(
     val url: String = "",

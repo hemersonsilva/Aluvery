@@ -17,7 +17,7 @@ import com.hemerson.aluvery.sampledata.sampleSections
 import com.hemerson.aluvery.ui.screens.HomeScreen
 import com.hemerson.aluvery.ui.theme.AluveryTheme
 import com.hemerson.aluvery.ui.viewmodels.HomeScreenViewModel
-import com.hemerson.aluvery.uistate.HomeUiState
+import com.hemerson.aluvery.ui.state.HomeUiState
 
 class MainActivity : ComponentActivity() {
 
