@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -41,16 +42,16 @@ import java.text.DecimalFormat
 fun ProductFormScreen(
     onSaveClick: (Product) -> Unit = {}
 ){
-    var name by remember {
+    var name by rememberSaveable {
         mutableStateOf("")
     }
-    var url by remember {
+    var url by rememberSaveable {
         mutableStateOf("")
     }
-    var price by remember {
+    var price by rememberSaveable {
         mutableStateOf("")
     }
-    var description by remember {
+    var description by rememberSaveable {
         mutableStateOf("")
     }
     val formatter = remember {
