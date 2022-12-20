@@ -15,11 +15,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -31,74 +28,24 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.hemerson.aluvery.R
-import com.hemerson.aluvery.model.Product
-import com.hemerson.aluvery.ui.theme.AluveryTheme
 import com.hemerson.aluvery.ui.state.ProductFormUiState
-import java.math.BigDecimal
-import java.text.DecimalFormat
+import com.hemerson.aluvery.ui.theme.AluveryTheme
+import com.hemerson.aluvery.ui.viewmodels.ProductFormScreenViewModel
 
 
 @Composable
 fun ProductFormScreen(
-    onSaveClick: (Product) -> Unit = {}
+    viewModel: ProductFormScreenViewModel,
+    onSaveClick: () -> Unit = {}
 ){
-    var name by rememberSaveable {
-        mutableStateOf("")
-    }
-    var url by rememberSaveable {
-        mutableStateOf("")
-    }
-    var price by rememberSaveable {
-        mutableStateOf("")
-    }
-    var description by rememberSaveable {
-        mutableStateOf("")
-    }
-    val formatter = remember {
-        DecimalFormat("#.##")
-    }
-
+    val state by viewModel.uiState.collectAsState()
     ProductFormScreen(
-        state = ProductFormUiState(
-            url = url,
-            name = name,
-            price = price,
-            description = description,
-            onUrlChange = {
-                url = it
-            },
-            onNameChange = {
-                name = it
-            },
-            onPriceChange = {
-                try {
-                    price = formatter.format(BigDecimal(it))
-                } catch (e: IllegalArgumentException) {
-                    if (it.isBlank()) {
-                        price = it
-                    }
-                }
-            },
-            onDescriptionChange = {
-                description = it
-            }
-        ),
+        state = state,
         onSaveClick = {
-            val convertedPrice = try {
-                BigDecimal(price)
-            } catch (e: NumberFormatException) {
-                BigDecimal.ZERO
-            }
-            val product = Product(
-                name = name,
-                image = url,
-                price = convertedPrice,
-                description = description
-            )
-            onSaveClick(product)
+            viewModel.save()
+            onSaveClick()
         }
     )
-
 }
 
 @Composable
